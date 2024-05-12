@@ -53,7 +53,7 @@ typedef struct {
 #define XK_SWITCH_MOD (1<<13|1<<14)
 
 /* function definitions used in config.h */
-static void clipcopy(const Arg *);
+void clipcopy(const Arg *);
 static void clippaste(const Arg *);
 static void numlock(const Arg *);
 static void selpaste(const Arg *);
@@ -1867,6 +1867,12 @@ kpress(XEvent *ev)
 	fprintf(f,"Key pressed: %s\n", XKeysymToString(XLookupKeysym(&ev->xkey,0)));
 	fclose(f);
 
+    if ( IS_SET(MODE_KBDSELECT) ) {
+		if ( match(XK_NO_MOD, e->state) ||
+            (XK_Shift_L | XK_Shift_R) & e->state )
+            win.mode ^= trt_kbdselect(ksym, buf, len);
+		return;
+    }
 	/* 1. shortcuts */
 	for (bp = shortcuts; bp < shortcuts + LEN(shortcuts); bp++) {
 		if (ksym == bp->keysym && match(bp->mod, e->state)) {
@@ -2113,4 +2119,11 @@ run:
 	run();
 
 	return 0;
+}
+void toggle_winmode(int flag) {
+        win.mode ^= flag;
+}
+
+void keyboard_select(const Arg *dummy) {
+    win.mode ^= trt_kbdselect(-1, NULL, 0);
 }

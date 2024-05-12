@@ -282,6 +282,10 @@ clippaste(const Arg *dummy)
 }
 
 void
+lol(const Arg *dummy)
+{
+}
+void
 selpaste(const Arg *dummy)
 {
 	XConvertSelection(xw.dpy, XA_PRIMARY, xsel.xtarget, XA_PRIMARY,
@@ -470,6 +474,7 @@ mouseaction(XEvent *e, uint release)
 void
 bpress(XEvent *e)
 {
+	return;
 	int btn = e->xbutton.button;
 	struct timespec now;
 	int snap;

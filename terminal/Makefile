@@ -36,6 +36,8 @@ dist: clean
 
 install: st
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+	cp -f st $(DESTDIR)$(PREFIX)/bin/terminal
+	chmod 755 $(DESTDIR)$(PREFIX)/bin/terminal
 	cp -f st $(DESTDIR)$(PREFIX)/bin
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/st
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1

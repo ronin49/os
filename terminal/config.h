@@ -201,11 +201,11 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
 	//{ ControlMask,              XK_c,           clipcopy,       {.i =  0} },
-	{ ControlMask,              XK_v,           clippaste,      {.i =  0} },
+	{ ControlMask | MODKEY,              XK_p,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ XK_ANY_MOD,              XK_Escape,      keyboard_select,{ 0 } },
+	{ MODKEY | ControlMask,              XK_c,      keyboard_select,{ 0 } },
 };
 
 /*

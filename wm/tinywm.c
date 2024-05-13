@@ -20,11 +20,13 @@ main (void)
 	if (!(dpy = XOpenDisplay (0x0)))
 		return 1;
 
-	XGrabKey (dpy, XKeysymToKeycode (dpy, XStringToKeysym ("a")), ControlMask,
+	XGrabKey (dpy, XKeysymToKeycode (dpy, XStringToKeysym ("o")), ControlMask | Mod1Mask,
 			DefaultRootWindow (dpy), False, GrabModeAsync, GrabModeAsync);
-	XGrabKey (dpy, XKeysymToKeycode (dpy, XStringToKeysym ("1")), ControlMask,
+	XGrabKey (dpy, XKeysymToKeycode (dpy, XStringToKeysym ("s")), ControlMask | Mod1Mask,
 			DefaultRootWindow (dpy), False, GrabModeAsync, GrabModeAsync);
-	XGrabKey (dpy, XKeysymToKeycode (dpy, XStringToKeysym ("2")), ControlMask,
+	XGrabKey (dpy, XKeysymToKeycode (dpy, XStringToKeysym ("1")), ControlMask | Mod1Mask,
+			DefaultRootWindow (dpy), False, GrabModeAsync, GrabModeAsync);
+	XGrabKey (dpy, XKeysymToKeycode (dpy, XStringToKeysym ("Tab")), Mod1Mask,
 			DefaultRootWindow (dpy), False, GrabModeAsync, GrabModeAsync);
 
 	XSelectInput (dpy, DefaultRootWindow (dpy), SubstructureRedirectMask); // to receive MapRequest
@@ -53,15 +55,19 @@ main (void)
 	fprintf(f,"Key pressed: %s\n", XKeysymToString(XLookupKeysym(&ev.xkey,0)));
 	fclose(f);
                 }
+		if(ev.type == KeyPress && XLookupKeysym(&ev.xkey,0) == XStringToKeysym("o"))
+		{
+			system ("&>/dev/null dmenu_run");
+		}
 		if(ev.type == KeyPress && XLookupKeysym(&ev.xkey,0) == XStringToKeysym("1"))
 		{
 			system ("if setxkbmap -print -verbose 10 | grep us$ -q; then setxkbmap -layout ua; else setxkbmap -layout us; fi");
 		}
-		if (ev.type == KeyPress && XLookupKeysym(&ev.xkey,0) == XStringToKeysym("2"))
+		if (ev.type == KeyPress && XLookupKeysym(&ev.xkey,0) == XStringToKeysym("s"))
 		{
 			system ("2>/dev/null maim -s | xclip -selection clipboard -t image/png -i");
 		}
-		if (ev.type == KeyPress && XLookupKeysym(&ev.xkey,0) == XStringToKeysym("a"))
+		if (ev.type == KeyPress && XLookupKeysym(&ev.xkey,0) == XStringToKeysym("Tab"))
 		{
 switch_window:
 			XQueryTree (dpy, DefaultRootWindow (dpy), &root_return,

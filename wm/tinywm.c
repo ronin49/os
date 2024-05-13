@@ -28,7 +28,7 @@ main (void)
 			DefaultRootWindow (dpy), False, GrabModeAsync, GrabModeAsync);
 
 	XSelectInput (dpy, DefaultRootWindow (dpy), SubstructureRedirectMask); // to receive MapRequest
-system("setxkbmap -option caps:ctrl_modifier");
+	system("setxkbmap -option caps:ctrl_modifier");
 
 	for (;;)
 	{

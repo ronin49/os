@@ -28,6 +28,7 @@ main (void)
 			DefaultRootWindow (dpy), False, GrabModeAsync, GrabModeAsync);
 
 	XSelectInput (dpy, DefaultRootWindow (dpy), SubstructureRedirectMask); // to receive MapRequest
+system("setxkbmap -option caps:ctrl_modifier");
 
 	for (;;)
 	{
@@ -54,7 +55,7 @@ main (void)
                 }
 		if(ev.type == KeyPress && XLookupKeysym(&ev.xkey,0) == XStringToKeysym("1"))
 		{
-			system ("if setxkbmap -print -verbose 10 | grep us$ -q; then setxkbmap -layout ru; else setxkbmap -layout us; fi");
+			system ("if setxkbmap -print -verbose 10 | grep us$ -q; then setxkbmap -layout ua; else setxkbmap -layout us; fi");
 		}
 		if (ev.type == KeyPress && XLookupKeysym(&ev.xkey,0) == XStringToKeysym("2"))
 		{

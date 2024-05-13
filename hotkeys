@@ -1,0 +1,110 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+wm
+? - switch-window
+? - switch lang
+? - screenshot
+terminal
+? - paste clipboard
+? - select text
+chrome
+ctrl-f - find
+ctrl-a - 
+tmux
+? - create window
+? - create pane
+? - switch window
+? - switch pane
+? - kill-pane
+? - scroll buffer
+bash
+ctrl-...
+alt-...
+tab
+vim
+a lot ...
+
+
+prefix add
+wm - easy
+terminal
+tmux
+bash
+vim
+chrome
+
+
+		wm	chrome	terminal	tmux	bash	vim
+wm			X	X		X	X	X
+chrome		X
+terminal	X				X	X	X
+tmux		X		X			X	X
+bash
+vim
+
+
+wm
+	chrome
+
+wm
+	terminal
+		tmux
+			bash
+				vim
+bash <-> vim - no collision
+
+prefix wm
+prefix terminal
+prefix tmux
+
+keylogger -> key frequent?
+
+key frequent -> no prefix
+else -> prefix
+
+
+
+wm
+	prefix
+		lang
+		screenshot
+	window
+terminal
+	prefix
+		copy
+		paste
+tmux
+	prefix
+		all
+
+
+functionality(no efficiency counted)
+wm
+ctrl-alt-l change language
+ctrl-alt-s make screenshot
+alt-tab    change window
+terminal
+ctrl-alt-c copy
+ctrl-alt-v paste
+vim
+s - grep

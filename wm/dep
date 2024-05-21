@@ -1,0 +1,4 @@
+	system("setxkbmap -option caps:ctrl_modifier");
+			system ("&>/dev/null dmenu_run");
+			system ("if setxkbmap -print -verbose 10 | grep us$ -q; then setxkbmap -layout ua; else setxkbmap -layout us; fi");
+			system ("2>/dev/null maim -s | xclip -selection clipboard -t image/png -i");

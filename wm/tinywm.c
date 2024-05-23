@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 	int
-main (void)
+main (int argc, char ** argv)
 {
 	Display *dpy;
 	XEvent ev;
@@ -17,7 +17,9 @@ main (void)
 	unsigned int border_width_return;
 	unsigned int depth_return;
 
-	if (!(dpy = XOpenDisplay (0x0)))
+	system(argv[1]);
+
+	if (!(dpy = XOpenDisplay (0)))
 		return 1;
 
 	XGrabKey (dpy, XKeysymToKeycode (dpy, XStringToKeysym ("o")), ControlMask | Mod1Mask,
@@ -30,7 +32,7 @@ main (void)
 			DefaultRootWindow (dpy), False, GrabModeAsync, GrabModeAsync);
 
 	XSelectInput (dpy, DefaultRootWindow (dpy), SubstructureRedirectMask); // to receive MapRequest
-	system("setxkbmap -option caps:ctrl_modifier");
+	system("setxkbmap -option caps:escape");
 
 	for (;;)
 	{
